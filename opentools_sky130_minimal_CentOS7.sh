@@ -76,7 +76,7 @@ echo "Setting up minimal workarea"
 cd ~
 mkdir sky130_skel
 cd sky130_skel
-wget https://www.github.com/britovski/sky130_skel/minimal_libs.tgz
+wget https://github.com/britovski/sky130_skel/blob/main/minimal_libs.tgz
 tar zxvpf minimal_libs.tgz
 
 echo "Minimal configuration for EDA open source tools and sky130 open PDK done!"
