@@ -127,6 +127,15 @@ Then download, change permissions, and and run the scripts 'openlane_sky130_inst
         exit
         ./openlane_user_install.sh
 
+To run openlane with the locally built docker image, run the following steps:
+
+        cd ~/sky130_skel/openlane
+        export PDK_ROOT=/edatools/pdks
+        docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) openlane:rc6
+        ./flow.tcl -design 'design_name'
+ 
+See https://github.com/efabless/openlane for more informations on how to use openlane. 
+
 ### RF Flow
 
 Work in progress. (Qucsstudio, qucs-s, xyce or post-processing based)
