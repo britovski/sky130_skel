@@ -35,9 +35,9 @@ Step 2. Run the 'minimal_opentools.sh' as root and them download and run the 'mi
         ./minimal_sky130_skel.sh
 
 I call this first option as minimal since it support basic design flow with following open source EDA tools:
-    - ngspice (version 33) with ADMS support;
-    - magic (version 8.3);
-    - netgen (version 1.5).
+- ngspice (version 33) with ADMS support;
+- magic (version 8.3);
+- netgen (version 1.5).
     
 and also, minimal sky130 models for circuit simulation and a `.tech` file.
 
@@ -82,9 +82,8 @@ Note that to finish the setup you will need to do the following:
     echo "#####################################################################################################################"
 
 This scripts solve some additional dependencies and install two new tools:
-
-    - xschem (version XX); and
-    - klayout (version XX);
+- xschem (version XX); and
+- klayout (version XX);
 
 also, they install all `skywater-pdk` libraries in `pdks` directory, as well as `xschem_sky130` directory inside `sky130_skel` to support configured xschem+sky130 workflow.
 
