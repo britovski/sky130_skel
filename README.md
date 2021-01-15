@@ -5,28 +5,73 @@ This repository contains scripts and some libraries for setting up EDA open sour
 ## Guiding instructions
 
 ### Pre-requisites
-First of all you need to have linux! The scripts were implemented and tested for CentOS 7 distribution since is the most commonly used due to support for EDA (commercial) tools, but Ubuntu is also much used from open source community and the scripts can be adapted to use with it.
+First of all you need to have linux! The scripts were implemented and tested for CentOS 7 distribution (7.9) since is the most commonly used due to support for EDA (commercial) tools, but Ubuntu is also much used from open source community and the scripts can be adapted to use with it.
 
 So you need to have an installation of CentOS 7 on your computer. If you don´t have yet, you need to choose between 3 options:
 - single linux installation;
-- dual-boot installation (if you really want to maintain windowns or maybe mac OSs);
+- dual-boot installation (if you really want to maintain windowns, or maybe macOSX);
 - linux on a virtual machine (VM) running on windows.
 
-Of course, the worst option is to run on a virtual machine because virtualization will imply to a slower processing, but works, and I tested all in both dedicated linux and also using Oracle VirtualBox VM's.
+Of course, the worst option is to run on a virtual machine because virtualization can slower the processing, but works, and I tested the scripts in both "dedicated" linux and also using Oracle VirtualBox VM's.
 
-If you wan´t to know how to install CentOS 7, see the following instuctions: LINK
+If you want to know how to install CentOS 7 see the following instuctions: https://linoxide.com/how-tos/centos-7-step-by-step-screenshots/
 
-Here are also a brief guide to install it on a VM: LINK
+At least 20 Gb space is required for minimal or recommended installation. At least 40 Gb space for basic standard cells PDK installation with openlane or qflow base flows; and at least 60 Gb if you want all PDK standard cells installed for digital flow.
 
-### Minimal skel
-Onde you have fresh CentOS 7 Linux installed, you can setup an skel to use sky130 open PDK. I call this first option as minimal since it support basic design flow with ngspice (with ADMS support), magic and netgen; with minimal models for sky130 primitives and tech file.
+Here are also a brief guide to install it on a VM: <TO PUT A GUIDE TO VM CONFIG/INSTALL HERE>
 
-Just download and run the 'minimal_opentools.sh' as root and them download and run the 'minimal_sky130_skel.sh' script as user. 
+### Minimal Skel
+Once you have a fresh CentOS 7 Linux installed, you can setup an skel to use sky130 open PDK, following below steps:
+
+Step 1. Download and change file permissions.
+        
+        chmod 777 *.sh
+
+Step 2. Run the 'minimal_opentools.sh' as root and them download and run the 'minimal_sky130_skel.sh' script as user.
+
+        su
+        ./minimal_opentools.sh
+        exit
+        ./minimal_sky130_skel.sh
+
+I call this first option as minimal since it support basic design flow with following open source EDA tools:
+- ngspice (version 33) with ADMS support;
+- magic (version 8.3);
+- netgen (version 1.5).
+    
+and also, minimal sky130 models for circuit simulation and a `.tech` file.
+
+The directory structure is organized as follow:
+```bash 
+/edatools/
+  └── opentools
+  └── pdks
+```
+
+and
+
+```bash 
+~/sky130_skel/
+    └── minimal_libs
+```
+
+where `opentools` has the EDA tools and `pdks`the PDK libraries and utilities (`pdks` is not created for **minimal** setup).
+
+and `sky130_skel` is the user working directory.
+
+Of course, you can customize the scripts to do in a different way.
+
+This minimal setup will provide you to simulate netlists using an **SPICE deck** using sky130 simples `.lib` files as well as to create layouts and perform DRC and LVS checks. If you want to use an schemactic capture support and more PDK models, go to the **Custom AMS (Recommended)** installation flow.
 
 ### Custom AMS (Recommended)
-For this setup you need Minimal skel done.
+For this setup you need Minimal skel done (**as performed in steps 1 and 2**), then go to steps below:
 
-Then download and run the 'recommended_opentools_update.sh' as root and them download and run the 'recommended_AMS_sky130_pdk_install.sh' scripts as user.
+Step 3. Run the 'recommended_opentools_update.sh' as root and then run the 'recommended_AMS_sky130_pdk_install.sh' scripts as user (if you not yet change permissions, do Step 1 again before).
+
+        su
+        ./recommended_opentools_update.sh
+        exit
+        ./recommended_AMS_sky130_pdk_install.sh
 
 Note that to finish the setup you will need to do the following:
 
@@ -36,16 +81,61 @@ Note that to finish the setup you will need to do the following:
     echo "set SKYWATER_STDCELLS $TOOLS_DIR/pdks/skywater-pdk/libraries/sky130_fd_sc_hd/latest"
     echo "#####################################################################################################################"
 
-### AMS/Digital
+This scripts solve some additional dependencies and install two new tools:
+- xschem (version XX); and
+- klayout (version XX);
+
+also, they install all `skywater-pdk` libraries in `pdks` directory, as well as `xschem_sky130` directory inside `sky130_skel` to support configured xschem+sky130 workflow.
+
+The directory structure is like below:
+```bash 
+/edatools/
+  └── opentools
+        └── adms
+        └── ngspice
+        └── magic
+        └── netgen
+        └── xschem
+        └── klayout
+  └── pdks
+        └── skywater-pdk
+```
+
+and
+
+```bash 
+~/sky130_skel/
+    └── minimal_libs
+    └── xschem_sky130
+  
+```
+
+Run xschem from `xschem_sky130` directory and explore the examples.
+
+### AMS/Digital Flow
 
 Work in progress. (Qflow based)
 
-### Advanced Digital
+### Advanced Digital Flow
 For this setup you need Minimal skel done (or recommended).
 
-Then download and run the 'openlane_sky130_install.sh' as root and them download and run the 'openlane_user_install.sh' scripts as user.
+Then download, change permissions, and and run the scripts 'openlane_sky130_install.sh' as root and 'openlane_user_install.sh' as user, as follows:
 
-### RF
+        su
+        ./openlane_sky130_install.sh
+        exit
+        ./openlane_user_install.sh
+
+To run openlane with the locally built docker image, run the following steps:
+
+        cd ~/sky130_skel/openlane
+        export PDK_ROOT=/edatools/pdks
+        docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) openlane:rc6
+        ./flow.tcl -design 'design_name'
+ 
+See https://github.com/efabless/openlane for more informations on how to use openlane. 
+
+### RF Flow
 
 Work in progress. (Qucsstudio, qucs-s, xyce or post-processing based)
 
@@ -63,9 +153,8 @@ http://opencircuitdesign.com/
 -	IRSIM – switch-level simulator
 -	XCircuit – just to draw high-quality schematics.
 
--	Wcalc
-
--	Nghdl – ghdl/ngspice interface
+*Wcalc
+*Nghdl – ghdl/ngspice interface
 
 Digital:
 -	Ghdl
@@ -88,3 +177,5 @@ Viewers:
 Web-based
 -	Falstad
 -	EasyEDA
+
+Work in progress...
