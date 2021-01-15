@@ -4,10 +4,10 @@ echo "Installation and automated test of the Openlane RTL2GDS Adanced Digital Fl
 
 #echo "You will need root permissions to perform installation..."
 
-#if [[ $EUID -ne 0 ]]; then
-#   echo "This script must be run as root"
-#   exit 1
-#fi
+if [[ $EUID -ne 1000 ]]; then
+   echo "This script must be run as user"
+   exit 1
+fi
 
 export PDK_ROOT=/edatools/pdks
 #export PDK_ROOT=/tools/pdks

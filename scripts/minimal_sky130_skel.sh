@@ -1,4 +1,11 @@
 echo "Setting up minimal sky130 PDK workarea"
+
+if [[ $EUID -ne 1000 ]]; then
+   echo "This script must be run as user"
+   exit 1
+fi
+
+cd ~
 mkdir sky130_skel
 mkdir temp
 cd temp

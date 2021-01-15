@@ -2,10 +2,11 @@ echo "Installation of sky130 open source PDK will begin..."
 
 echo "You will need root permissions to perform tools installation..."
 
-#if [[ $EUID -ne 0 ]]; then
-#   echo "This script must be run as root"
-#   exit 1
-#fi
+if [[ $EUID -ne 1000 ]]; then
+   echo "This script must be run as user"
+   exit 1
+fi
+
 
 echo "Creating pdks directory..."
 
