@@ -137,7 +137,17 @@ See https://github.com/efabless/openlane for more informations on how to use ope
 
 ### RF Flow
 
-Work in progress. (Qucsstudio, qucs-s, xyce or post-processing based)
+For this setup you need Minimal skel done (or recommended).
+
+Then download, change permissions, and and run the scripts 'rfopentools_install.sh' as root and 'rf_user_install.sh' as user, as follows:
+
+        su
+        ./rfopentools_install.sh
+        exit
+        ./rf_user_install.sh
+
+
+In order to use QucsStudio, enter the directory `~/sky130_skel/qucsstudio` and type `./qucsstudio &`. First time you use, a graphical user interface ask you to install some wine complementary libs. Just click `install` and wait to QucsStudio open.
 
 ### Inductor synthesis and EM sims Flow
 
