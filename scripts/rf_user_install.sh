@@ -14,7 +14,7 @@ echo "Preparing libraries for RF flow using Qucs based tools..."
 echo "Creating QucsStudio working directory..."
 
 mkdir qucsstudio
-cd QucsStudio
+cd qucsstudio
 cat >> qucsstudio.sh << 'END'
 wine /edatools/opentools/QucsStudio/bin/qucs.exe
 END

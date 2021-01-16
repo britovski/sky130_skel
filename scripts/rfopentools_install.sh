@@ -42,12 +42,12 @@ cd ..
 
 echo "Installing QucsStudio..."
 
-unzip http://dd6um.darc.de/QucsStudio/QucsStudio-3.3.2.zip
+unzip QucsStudio-3.3.2.zip
 
 echo "Installing Xyce..."
 
 rpm -ivh Install_Xyce_Release7.2.0_Intel64_RHEL7_Serial-icc_opensource.rpm
-ln -s /usr/local/bin/Xyce /usr/local/Xyce-Release-7.2.0-OPENSOURCE/bin/Xyce
+ln -s /usr/local/Xyce-Release-7.2.0-OPENSOURCE/bin/Xyce /usr/local/bin/Xyce
 
 echo "Installing Qucs-S..."
 
