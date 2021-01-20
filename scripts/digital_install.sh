@@ -26,6 +26,7 @@ yum install gcc-gnat -y
 yum install clang libffi-devel gsl-devel -y
 yum install python3-tkinter -y
 #yum installl cmake -y
+yum install epel-release -y
 
 wget "https://github.com/Kitware/CMake/releases/download/v3.13.0/cmake-3.13.0.tar.gz"
 tar -xvzf cmake-3.13.0.tar.gz
@@ -58,7 +59,7 @@ yum install iverilog -y
 
 echo "Installing GHDL..."
 tar zxvpf ghdl-0.37.tar.gz
-cd ghdk-0.37
+cd ghdl-0.37
 ./configure
 make
 make install
@@ -76,22 +77,23 @@ echo "Installing Graywolf..."
 tar zxvpf graywolf-0.1.6.tar.gz
 cd graywolf-0.1.6
 mkdir build
+cd build
 cmake ..
 make
 make install
 cd ../../
 
 echo "Installing qrouter..."
-tar zxvpf qrouter...
-cd qrouter...
+tar zxvpf qrouter-1.4.83.tgz
+cd qrouter-1.4.83
 ./configure
 make
 make install
 cd ..
 
 echo "Installing qflow..."
-tar zxvpf qflow...
-cd qflow...
+tar zxvpf qflow-1.4.90.tgz
+cd qflow-1.4.90
 ./configure
 make
 make install
