@@ -57,8 +57,8 @@ make install
 cd ../../
 
 echo "Installing Magic Layout..."
-tar zxvpf magic-8.3.113.tgz
-cd magic-8.3.113
+tar zxvpf magic-8.3.78.tgz
+cd magic-8.3.78
 ./configure
 make
 make install
