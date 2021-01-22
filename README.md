@@ -83,7 +83,7 @@ Note that to finish the setup you will need to do the following:
 
 This scripts solve some additional dependencies and install two new tools:
 - xschem (version XX); and
-- klayout (version XX);
+- klayout (version XX).
 
 also, they install all `skywater-pdk` libraries in `pdks` directory, as well as `xschem_sky130` directory inside `sky130_skel` to support configured xschem+sky130 workflow.
 
@@ -113,8 +113,26 @@ and
 Run xschem from `xschem_sky130` directory and explore the examples.
 
 ### AMS/Digital Flow
+For this setup you need Minimal skel done (or recommended).
 
-Work in progress. (Qflow based)
+Then download, change permissions, and run the scripts 'digital_install.sh' as root and 'digital_user_install.sh' as user, as follows:
+
+        su
+        ./digital_install.sh
+        exit
+        ./digital_user_install.sh
+
+Follow the final script instructions in order to test if installation was ok.
+
+This scripts solve some additional dependencies and install following new tools:
+- ghdl (version XX);
+- iverilog (version XX);
+- GTKWave viewer;
+- Yosys;
+- Graywolf;
+- Qrouter;
+- Qflow;
+- OpenSTA.
 
 ### Advanced Digital Flow
 For this setup you need Minimal skel done (or recommended).
@@ -146,6 +164,9 @@ Then download, change permissions, and and run the scripts 'rfopentools_install.
         exit
         ./rf_user_install.sh
 
+This scripts solve some additional dependencies and install two new tools:
+- Qucs-S with Xyce and qucs/qucsator (version XX); and
+- QucsStudio (version XX);
 
 In order to use QucsStudio, enter the directory `~/sky130_skel/qucsstudio` and type `./qucsstudio &`. First time you use, a graphical user interface ask you to install some wine complementary libs. Just click `install` and wait to QucsStudio open.
 
@@ -155,37 +176,35 @@ Work in progress. (ASITIC and OpenEMS)
 
 ### Extras
 
-Guia Pós-Instalação CentOS
+#### CentOS Post-installation guide (in portuguese)
 https://www.vivaolinux.com.br/artigo/CentOS-7-Guia-pratico-pos-instalacao
 
-Other open source tools:
-http://opencircuitdesign.com/
--	IRSIM – switch-level simulator
--	XCircuit – just to draw high-quality schematics.
+#### Other (not covered here) open source tools:
+##### From http://opencircuitdesign.com/
+- IRSIM – switch-level simulator
+- XCircuit – just to draw high-quality schematics.
 
-*Wcalc
-*Nghdl – ghdl/ngspice interface
+##### Wcalc
 
-Digital:
--	Ghdl
--	Icarus Verilog
--	verilator
+##### Nghdl – ghdl/ngspice interface
 
-Other needed:
--	PCB (Kicad)
--	BOM Generator
+##### Verilator
 
-Suites:
--	eSim
--	gEDA
--	Electric
+##### Other needed:
+- PCB (Kicad)
+- BOM Generator
 
-Viewers:
--	GTKWave
--	Gaw (originally from gEDA/gwave)
+##### Suites:
+- eSim
+- gEDA
+- Electric
 
-Web-based
--	Falstad
--	EasyEDA
+##### Viewers
+- Gaw (originally from gEDA/gwave)
+
+##### Web-based
+- Falstad
+- EasyEDA
+- EDAplayground
 
 Work in progress...
