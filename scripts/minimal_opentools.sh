@@ -29,8 +29,8 @@ yum install graphviz libXaw-devel readline-devel flex bison -y
 echo "Downloading tools..."
 wget -O ngspice-33.tar.gz https://sourceforge.net/projects/ngspice/files/ng-spice-rework/33/ngspice-33.tar.gz/download
 wget -O adms-2.3.6.tar.gz https://sourceforge.net/projects/mot-adms/files/adms-source/2.3/adms-2.3.6.tar.gz/download
-wget http://opencircuitdesign.com/magic/archive/magic-8.3.113.tgz
-wget http://opencircuitdesign.com/netgen/archive/netgen-1.5.162.tgz
+wget http://opencircuitdesign.com/magic/archive/magic-8.3.78.tgz
+wget http://opencircuitdesign.com/netgen/archive/netgen-1.5.155.tgz
  
 echo "Installing tools..."
 
