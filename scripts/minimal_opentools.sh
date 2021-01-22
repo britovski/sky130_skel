@@ -66,8 +66,8 @@ make install
 cd ..
 
 echo "Installing Netgen..."
-tar zxvpf netgen-1.5.162.tgz
-cd netgen-1.5.162
+tar zxvpf netgen-1.5.155.tgz
+cd netgen-1.5.155
 ./configure
 make
 make install
