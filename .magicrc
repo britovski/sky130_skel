@@ -13,7 +13,7 @@ drc euclidean on
 
 # Allow override of PDK path from environment variable PDKPATH
 if {[catch {set PDKPATH $env(PDKPATH)}]} {
-    set PDKPATH "/edatools/DKs/sky130A"
+    set PDKPATH "/edatools/pdks/sky130A"
 }
 
 # loading technology
