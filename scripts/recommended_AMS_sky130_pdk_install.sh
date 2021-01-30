@@ -20,6 +20,7 @@ cd pdks
 
 export TOOLS_DIR=/edatools
 #export TOOLS_DIR=/tools
+export PDK_ROOT=$TOOLS_DIR/pdks
 
 echo "Cloning sky130 libraries..."
 sudo git clone https://github.com/google/skywater-pdk
