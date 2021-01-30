@@ -38,12 +38,21 @@ sudo git submodule update
 
 cd ..
 
-#uncomment below for Open_PDKs compatibility
+echo "Cloning Open_PDKs tool and setting up for tool flow compatibility..."
+git clone https://github.com/RTimothyEdwards/open_pdks.git
+cd open_pdks
+git checkout 32cdb2097fd9a629c91e8ea33e1f6de08ab25946
+./configure --with-sky130-source=$PDK_ROOT/skywater-pdk/libraries --with-sky130-local-path=$PDK_ROOT
+cd sky130
+make
+make install-local
+
+#uncomment below for Open_PDKs compatibility (OLD TRY)
 #echo "Cloning Open_PDKs tool and setting up for tool flow compatibility..."
 #sudo git clone git://opencircuitdesign.com/open_pdks
 #cd open_pdks
 #sudo git checkout open_pdks-1.0
-#sudo ./configure --enable-sky130-pdk=$TOOLS_DIR/pdks/skywater-pdk --with-sky130-local-path=$TOOLS_DIR/pdks
+#sudo ./configure --enable-sky130-pdk=$TOOLS_DIR/pdks/skywater-pdk --with-sky130-local-path=$TOOLS_DIR/pdks #NEW VERSION USES --ENABLE
 #cd sky130
 #sudo make
 #sudo make install
@@ -64,12 +73,26 @@ sudo cp -r sky130_fd_pr sky130_fd_pr_ngspice
 cd sky130_fd_pr_ngspice/latest
 sudo patch -p2 < ~/sky130_skel/xschem_sky130/sky130_fd_pr.patch
 
+echo "Setting up magic ambient config..."
+cd ~/sky130_skel
+wget https://github.com/britovski/sky130_skel/blob/main/.magicrc
+
+echo "Setting up spice ambient area config with multi finger transistor compatibility..."
+cat >> .spiceinit << 'END'
+set ngbehavior=hs
+END
+
+cd xschem_sky130
+
+cat >> .spiceinit << 'END'
+set ngbehavior=hs
+END
+
+
 echo "#####################################################################################################################"
 echo "To complete the workarea setup you need to update the last two lines of the file 'xschemrc' with the following paths:"
 echo "set SKYWATER_MODELS $TOOLS_DIR/pdks/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest"
 echo "set SKYWATER_STDCELLS $TOOLS_DIR/pdks/skywater-pdk/libraries/sky130_fd_sc_hd/latest"
 echo "#####################################################################################################################"
-
-cd ~/sky130_skel/xschem_sky130
 
 echo "Recommended sky130 open source PDK installation for AMS flow done!"
