@@ -69,9 +69,9 @@ For this setup you need Minimal skel done (**as performed in steps 1 and 2**), t
 Step 3. Run the 'recommended_opentools_update.sh' as root and then run the 'recommended_AMS_sky130_pdk_install.sh' scripts as user (if you not yet change permissions, do Step 1 again before).
 
         su
-        ./recommended_opentools_update.sh
+        ./recommended_opentools_sky130_update.sh
         exit
-        ./recommended_AMS_sky130_pdk_install.sh
+        ./recommended_AMS_user_update.sh
 
 Note that to finish the setup you will need to do the following:
 
