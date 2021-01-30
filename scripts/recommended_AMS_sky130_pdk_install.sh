@@ -39,13 +39,13 @@ sudo git submodule update
 cd ..
 
 echo "Cloning Open_PDKs tool and setting up for tool flow compatibility..."
-git clone https://github.com/RTimothyEdwards/open_pdks.git
+sudo git clone https://github.com/RTimothyEdwards/open_pdks.git
 cd open_pdks
-git checkout 32cdb2097fd9a629c91e8ea33e1f6de08ab25946
-./configure --with-sky130-source=$PDK_ROOT/skywater-pdk/libraries --with-sky130-local-path=$PDK_ROOT
+sudo git checkout 32cdb2097fd9a629c91e8ea33e1f6de08ab25946
+sudo ./configure --with-sky130-source=$PDK_ROOT/skywater-pdk/libraries --with-sky130-local-path=$PDK_ROOT
 cd sky130
-make
-make install-local
+sudo make
+sudo make install-local
 
 #uncomment below for Open_PDKs compatibility (OLD TRY)
 #echo "Cloning Open_PDKs tool and setting up for tool flow compatibility..."
@@ -75,7 +75,7 @@ sudo patch -p2 < ~/sky130_skel/xschem_sky130/sky130_fd_pr.patch
 
 echo "Setting up magic ambient config..."
 cd ~/sky130_skel
-wget https://github.com/britovski/sky130_skel/blob/main/.magicrc
+wget https://raw.githubusercontent.com/britovski/sky130_skel/main/.magicrc
 
 echo "Setting up spice ambient area config with multi finger transistor compatibility..."
 cat >> .spiceinit << 'END'
