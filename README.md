@@ -18,12 +18,10 @@ If you want to know how to install CentOS 7 see the following instuctions: https
 
 At least 20 Gb space is required for minimal or recommended installation. At least 40 Gb space for basic standard cells PDK installation with openlane or qflow base flows; and at least 60 Gb if you want all PDK standard cells installed for digital flow.
 
-Here are also a brief guide to install it on a VM: <TO PUT A GUIDE TO VM CONFIG/INSTALL HERE>
-
 ### Minimal Skel
 Once you have a fresh CentOS 7 Linux installed, you can setup an skel to use sky130 open PDK, following below steps:
 
-Step 1. Download and change file permissions.
+Step 1. Download (or clone the repository) and change scripts file permissions.
         
         chmod 777 *.sh
 
