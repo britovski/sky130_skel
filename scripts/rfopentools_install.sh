@@ -25,7 +25,7 @@ echo "Downloading RF tools..."
 wget http://dd6um.darc.de/QucsStudio/QucsStudio-3.3.2.zip
 wget -O qucs-0.0.18.tar.gz https://sourceforge.net/projects/qucs/files/qucs/0.0.18/qucs-0.0.18.tar.gz/download
 wget https://xyce.sandia.gov/downloads/_assets/documents/Binaries/Install_Xyce_Release7.2.0_Intel64_RHEL7_Serial-icc_opensource.rpm
-wget http://download.opensuse.org/repositories/home:/ra3xdh/CentOS_7/x86_64/qucs-s-0.0.22-4.3.x86_64.rpm
+wget http://download.opensuse.org/repositories/home:/ra3xdh/CentOS_7/x86_64/qucs-s-0.0.22-4.4.x86_64.rpm
 #asitic docker
 #OpenEMS
 
@@ -51,7 +51,7 @@ ln -s /usr/local/Xyce-Release-7.2.0-OPENSOURCE/bin/Xyce /usr/local/bin/Xyce
 
 echo "Installing Qucs-S..."
 
-rpm -ivh qucs-s-0.0.22-4.3.x86_64.rpm
+rpm -ivh qucs-s-0.0.22-4.4.x86_64.rpm
 
 #echo "Installing OpenEMS..."
 
