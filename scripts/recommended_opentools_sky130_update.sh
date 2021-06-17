@@ -17,16 +17,26 @@ cd opentools
 
 echo "Resolving dependencies..."
 yum install ruby qt-x11 -y
+yum install gtk3-devel -y
 
 echo "Downloading additional tools..."
 git clone https://github.com/StefanSchippers/xschem
 wget https://www.klayout.org/downloads/CentOS_7/klayout-0.26.9-0.x86_64.rpm
+wget http://download.tuxfamily.org/gaw/download/gaw3-20200922.tar.gz
 
 echo "Installing tools..."
 
 echo "Installing XSchem..."
 
 cd xschem
+./configure
+make
+make install
+cd ..
+
+echo "Installing gaw"
+tar zxvpf gaw3-20200922.tar.gz
+cd gaw3-20200922
 ./configure
 make
 make install
