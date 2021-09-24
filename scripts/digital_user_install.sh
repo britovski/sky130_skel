@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Digital Workarea setup will begin..."
 
 if [[ $EUID -ne 1000 ]]; then
