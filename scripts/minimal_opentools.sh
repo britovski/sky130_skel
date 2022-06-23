@@ -27,7 +27,7 @@ yum install graphviz libXaw-devel readline-devel flex bison -y
 #yum install openmpi openmpi-devel openmpi3 openmpi-devel3 -y #use if you want multi-core support
 
 echo "Downloading tools..."
-wget -O ngspice-33.tar.gz https://sourceforge.net/projects/ngspice/files/ng-spice-rework/33/ngspice-33.tar.gz/download
+wget -O ngspice-33.tar.gz https://sourceforge.net/projects/ngspice/files/ng-spice-rework/old-releases/33/ngspice-33.tar.gz/download
 wget -O adms-2.3.6.tar.gz https://sourceforge.net/projects/mot-adms/files/adms-source/2.3/adms-2.3.6.tar.gz/download
 wget http://opencircuitdesign.com/magic/archive/magic-8.3.78.tgz
 wget http://opencircuitdesign.com/netgen/archive/netgen-1.5.155.tgz
@@ -44,7 +44,7 @@ cd ..
 
 tar zxvpf ngspice-33.tar.gz
 cd ngspice-33
-wget -O ng_adms_va.tar.gz https://sourceforge.net/projects/ngspice/files/ng-spice-rework/33/ng_adms_va.tar.gz/download
+wget -O ng_adms_va.tar.gz https://sourceforge.net/projects/ngspice/files/ng-spice-rework/old-releases/33/ng_adms_va.tar.gz/download
 tar zxvpf ng_adms_va.tar.gz
 ./autogen.sh --adms
 mkdir release
@@ -74,4 +74,3 @@ make install
 
 echo "Minimal EDA open source tools installation done!"
 echo "Back to user and run the 'minimal_sky130_skel.sh' script"
-
