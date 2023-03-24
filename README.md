@@ -206,3 +206,5 @@ https://www.vivaolinux.com.br/artigo/CentOS-7-Guia-pratico-pos-instalacao
 - EDAplayground
 
 Work in progress...
+
+https://semiwiki.com/wikis/industry-wikis/eda-open-source-tools-wiki/
